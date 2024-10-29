@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker - Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Finance Tracker</h1>
+        <p>Your personal finance management solution.</p>
+        <div class="auth-buttons">
+            <a href="{% url 'signup' %}" class="btn btn-signup">Sign Up</a>
+            <a href="{% url 'login' %}" class="btn btn-login">Log In</a>
+        </div>
+    </header>
+</body>
+</html>
+

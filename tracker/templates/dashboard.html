@@ -1,0 +1,15 @@
+<!-- tracker/templates/tracker/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker</title>
+</head>
+<body>
+    <h1>Welcome to Your dashboard</h1>
+    <a href="{% url 'income' %}">Add Income</a>
+    <a href="{% url 'expense' %}">Add Expense</a>
+    <a href="{% url 'dashboard' %}">View Dashboard</a>
+</body>
+</html>
