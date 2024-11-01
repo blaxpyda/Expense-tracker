@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
+from django.views import generic
 
 def home(request):
     return render(request, 'home.html')
@@ -22,6 +23,7 @@ def signup(request):
 
 class CustomLoginView(LoginView):
     template_name = 'login.html'
+    next_page = 'dashboard'
 
 @login_required
 def income(request):

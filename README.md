@@ -4,11 +4,11 @@ This is an expense tracking application written in python using the Django frame
 
 # Installing dependencies
 To install the necessary dependencies run
-```
+```sh
 pip install -r requirements.txt
 ```
 # Running
 on linux
-```
+```sh
 python manage.py runserver
 ```
