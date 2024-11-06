@@ -12,3 +12,8 @@ on linux
 ```sh
 python manage.py runserver
 ```
+
+# Running on windows and Mac
+```sh
+py manage.py runserver
+```
