@@ -48,5 +48,13 @@ def dashboard(request):
     incomes = Income.objects.filter(user=request.user)
     expenses = Expense.objects.filter(user=request.user)
     goals = Goal.objects.filter(user=request.user)
-    return render(request, 'dashboard.html', {'incomes': incomes, 'expenses': expenses, 'goals': goals})
+
+    context = {
+        'incomes': incomes,
+        'expenses': expenses,
+        'goals': goals,
+        'context': context,
+    }
+
+    return render(request, 'dashboard.html', context)
 

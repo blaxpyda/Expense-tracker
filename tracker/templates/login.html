@@ -1,80 +1,75 @@
-<!doctype html>
+{% include "base.html" %}
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Diesel">
-    <meta name="generator" content="Hugo 0.84.0">
+
+<head>
+    {% block meta %}
+    {% endblock %}
+
     <title>Login page</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-
-    
-
-    <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% block boot %}
+    {% endblock %}
 
     <style>
         html,
         body {
-        height: 100%;
+            height: 100%;
         }
 
         body {
-        display: flex;
-        align-items: center;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
         }
 
         .form-signin {
-        width: 100%;
-        max-width: 330px;
-        padding: 15px;
-        margin: auto;
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
         }
 
         .form-signin .checkbox {
-        font-weight: 400;
+            font-weight: 400;
         }
 
         .form-signin .form-floating:focus-within {
-        z-index: 2;
+            z-index: 2;
         }
 
         .form-signin input[type="email"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
         }
 
         .form-signin input[type="password"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
-
     </style>
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
-      }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
     </style>
 
-    
+
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 
@@ -89,12 +84,12 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        body{
+        body {
             background: #00E5FF;
             min-height: 100vh;
         }
 
-        .wrapper{
+        .wrapper {
             max-width: 850px;
             background-color: #fff;
             border-radius: 10px;
@@ -105,7 +100,7 @@
             overflow: hidden;
         }
 
-        .wrapper .form-left{
+        .wrapper .form-left {
             background: #3786bd;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
@@ -115,7 +110,7 @@
             color: #fff;
         }
 
-        .wrapper h2{
+        .wrapper h2 {
             font-weight: 700;
             font-size: 25px;
             padding: 5px 0 0;
@@ -123,22 +118,22 @@
             pointer-events: none;
         }
 
-        .wrapper .form-left p{
+        .wrapper .form-left p {
             font-size: 0.9rem;
             font-weight: 300;
             line-height: 1.5;
             pointer-events: none;
         }
 
-        .wrapper .form-left .text{
+        .wrapper .form-left .text {
             margin: 20px 0 25px;
         }
 
-        .wrapper .form-left p span{
+        .wrapper .form-left p span {
             font-weight: 700;
         }
 
-        .wrapper .form-left input{
+        .wrapper .form-left input {
             padding: 15px;
             background: #fff;
             border-top-left-radius: 5px;
@@ -154,21 +149,21 @@
             outline: none;
         }
 
-        .wrapper .form-left input:hover{
+        .wrapper .form-left input:hover {
             background-color: #f2f2f2;
         }
 
-        .wrapper .form-right{
+        .wrapper .form-right {
             padding: 20px 40px;
             position: relative;
             width: 100%;
         }
 
-        .wrapper .form-right h2{
+        .wrapper .form-right h2 {
             color: #3786bd;
         }
 
-        .wrapper .form-right label{
+        .wrapper .form-right label {
             font-weight: 600;
             font-size: 15px;
             color: #666;
@@ -176,7 +171,7 @@
             margin-bottom: 8px;
         }
 
-        .wrapper .form-right .input-field{
+        .wrapper .form-right .input-field {
             width: 100%;
             padding: 10px 15px;
             border: 1px solid #e5e5e5;
@@ -186,7 +181,7 @@
             color: #333;
         }
 
-        .wrapper .form-right .input-field:focus{
+        .wrapper .form-right .input-field:focus {
             border: 1px solid #31a031;
         }
 
@@ -250,7 +245,7 @@
             height: 10px
         }
 
-        .wrapper .register{
+        .wrapper .register {
             padding: 12px;
             background: #3786bd;
             border-top-left-radius: 5px;
@@ -264,80 +259,82 @@
             font-size: 15px;
         }
 
-        .wrapper .register:hover{
+        .wrapper .register:hover {
             background-color: #3785bde0;
         }
 
-        .wrapper a{
+        .wrapper a {
             text-decoration: none;
         }
 
         @media (max-width: 860.5px) {
-            .wrapper{
+            .wrapper {
                 margin: 50px 5px;
             }
         }
 
 
-        @media (max-width: 767.5px){
-            .wrapper{
+        @media (max-width: 767.5px) {
+            .wrapper {
                 flex-direction: column;
                 margin: 30px 20px;
             }
 
-            .wrapper .form-left{
+            .wrapper .form-left {
                 border-bottom-left-radius: 0px;
             }
 
-            
+
         }
 
         @media (max-width: 575px) {
 
-            .wrapper{
+            .wrapper {
                 margin: 30px 15px;
             }
 
-            .wrapper .form-left{
+            .wrapper .form-left {
                 padding: 25px;
             }
-            .wrapper .form-right{
+
+            .wrapper .form-right {
                 padding: 25px;
             }
         }
     </style>
-  </head>
-  <body class="text-center">
-    
-<main class="form-signin" >
-  <form method="POST">
+</head>
 
-    {% csrf_token %}
-    
-    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<body class="text-center">
 
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
+    <main class="form-signin">
+        <form method="POST">
 
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-  </form>
-</main>
+            {% csrf_token %}
 
+            <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-    
-  </body>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        </form>
+    </main>
+
+    {% block js %}
+    {% endblock %}
+</body>
+
 </html>
-
