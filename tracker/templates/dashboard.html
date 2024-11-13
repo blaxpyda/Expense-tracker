@@ -13,9 +13,14 @@
 
 <body>
     <h1>Welcome to Your dashboard</h1>
-    <a href="{% url 'income' %}">Add Income</a>
-    <a href="{% url 'expense' %}">Add Expense</a>
-    <a href="{% url 'dashboard' %}">View Dashboard</a>
+    <a href="{% url 'tracker:income' %}">Add Income</a>
+    <a href="{% url 'tracker:expense' %}">Add Expense</a>
+    <a href="{% url 'tracker:dashboard' %}">View Dashboard</a>
+    <!--<a href="{% url 'tracker:logout' %}">Logout</a>-->
+    <form action="{% url 'tracker:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
 
     <!--JS tag-->
     {% block js %}

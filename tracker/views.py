@@ -3,9 +3,8 @@ from django.shortcuts import render, redirect
 from .models import Income, Expense, Goal
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
-from django.views import generic
+from django.contrib.auth.models import User
 
 def home(request):
     return render(request, 'home.html')
@@ -20,10 +19,6 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
-
-class CustomLoginView(LoginView):
-    template_name = 'login.html'
-    next_page = 'dashboard'
 
 @login_required
 def income(request):
@@ -50,10 +45,10 @@ def dashboard(request):
     goals = Goal.objects.filter(user=request.user)
 
     context = {
+        'user': User,
         'incomes': incomes,
         'expenses': expenses,
         'goals': goals,
-        'context': context,
     }
 
     return render(request, 'dashboard.html', context)
