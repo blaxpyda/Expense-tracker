@@ -45,7 +45,7 @@ def dashboard(request):
     goals = Goal.objects.filter(user=request.user)
 
     context = {
-        'user': User,
+        'user': request.user,
         'incomes': incomes,
         'expenses': expenses,
         'goals': goals,

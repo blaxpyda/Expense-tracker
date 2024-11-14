@@ -12,15 +12,74 @@
 </head>
 
 <body>
-    <h1>Welcome to Your dashboard</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'tracker:home' %}">Expense Tracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tracker:dashboard' %}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{% url 'tracker:logout' %}" method="post" class="d-inline m-0">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link btn-md">Log Out</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tracker:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tracker:signup' %}">Sign Up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1>Welcome, {{ user.username }}</h1>
+    <h2>Your Budget: </h2>
+    <h2>Total Expenses: </h2>
+    <section>
+        <h3>Expenses by category</h3>
+    </section>
+
+    <section>
+        <h3>Recent Transactions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Desctiption</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </section>
+
     <a href="{% url 'tracker:income' %}">Add Income</a>
     <a href="{% url 'tracker:expense' %}">Add Expense</a>
     <a href="{% url 'tracker:dashboard' %}">View Dashboard</a>
-    <!--<a href="{% url 'tracker:logout' %}">Logout</a>-->
-    <form action="{% url 'tracker:logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Log Out</button>
-    </form>
+
+    <main class="flex-grow-1">
+
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Expense Tracker App. All rights reserved.</p>
+        </div>
+    </footer>
 
     <!--JS tag-->
     {% block js %}
