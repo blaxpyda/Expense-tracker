@@ -43,29 +43,43 @@
         </div>
     </nav>
 
-    <h1>Welcome, {{ user.username }}</h1>
-    <h2>Your Budget: </h2>
-    <h2>Total Expenses: </h2>
-    <section>
-        <h3>Expenses by category</h3>
-    </section>
+    <div class="container overflow-hidden text-left">
+        <div class="row gx-5">
+            <div class="col">
+                <h1>Welcome, {{ user.username }}</h1>
+                <h3>Your Budget: </h3>
+                <h3>Total Expenses: </h3>
+                <section>
+                    <h3>Expenses by category</h3>
+                </section>
 
-    <section>
-        <h3>Recent Transactions</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Category</th>
-                    <th>Desctiption</th>
-                    <th>Amount</th>
-                </tr>
-            </thead>
-            <tbody>
+                <section>
+                    <h3>Recent Transactions</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Desctiption</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-            </tbody>
-        </table>
-    </section>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+            <div class="col">
+                <form method="post" action="{% url 'tracker:expense' %}">
+                    {% csrf_token %}
+                    {{ form.as_div }}
+                    <button class="btn btn-primary">Add Expense</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <a href="{% url 'tracker:income' %}">Add Income</a>
     <a href="{% url 'tracker:expense' %}">Add Expense</a>

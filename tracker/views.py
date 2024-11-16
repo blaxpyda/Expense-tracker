@@ -1,6 +1,7 @@
 # tracker/views.py
 from django.shortcuts import render, redirect
 from .models import Income, Expense, Goal
+from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
@@ -31,12 +32,15 @@ def income(request):
 
 @login_required
 def expense(request):
-    if request.method == "POST":
-        amount = request.POST['amount']
-        category = request.POST['category']
-        Expense.objects.create(user=request.user, amount=amount, category=category, date=request.POST['date'])
-        return redirect('dashboard')
-    return render(request, 'expense.html')
+    form = ExpenseForm()
+
+    # if request.method == "POST":
+    #     amount = request.POST['amount']
+    #     category = request.POST['category']
+    #     Expense.objects.create(user=request.user, amount=amount, category=category, date=request.POST['date'])
+    #     return redirect('dashboard')
+    context = {'form': form,}
+    return render(request, 'expense.html', context)
 
 @login_required
 def dashboard(request):
