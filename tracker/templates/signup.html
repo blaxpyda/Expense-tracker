@@ -1,71 +1,59 @@
 {% include "base.html" %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    {% block meta %}
-    {% endblock %}
-
-    <title>Sign Up - Finance Tracker</title>
-
-    <!--CSS tag Booystrap 5-->
-    {% block boot %}
-    {% endblock %}
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'tracker:home' %}">Expense Tracker</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'tracker:login' %}">Login</a>
-                    </li>
-                </ul>
+    <head>
+        {% block meta %}{% endblock %}
+        <title>Sign Up - Finance Tracker</title>
+        <!--CSS tag Booystrap 5-->
+        {% block boot %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'tracker:home' %}">Expense Tracker</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tracker:login' %}">Login</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    <!-- Signup Form -->
-    <div class="container mt-5">
-        <h2 class="text-center">Create an Account</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form method="post" action="{% url 'tracker:signup' %}">
-                    {% csrf_token %}
-                    <div class="form-group mb-3">
-                        {{ form.username.label_tag }}
-                        {{ form.username }}
-                    </div>
-                    <div class="form-group mb-3">
-                        {{ form.password1.label_tag }}
-                        {{ form.password1 }}
-                    </div>
-                    <div class="form-group mb-3">
-                        {{ form.password2.label_tag }}
-                        {{ form.password2 }}
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-                </form>
-                <p class="text-center mt-3">Already have an account? <a href="{% url 'tracker:login' %}">Log in
+        </nav>
+        <!-- Signup Form -->
+        <div class="container mt-5">
+            <h2 class="text-center">Create an Account</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        {% for field in form %}
+                        <div class="form-outline mb-4">
+                            {{ field.errors }}
+                            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+                            {{ field }}
+                            {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    </form>
+                    <p class="text-center mt-3">
+                        Already have an account? <a href="{% url 'tracker:login' %}">Log in
                         here</a>.
-                </p>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-
-    <main class="flex-grow-1">
-
-    </main>
-
-    <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p>&copy; 2024 Expense Tracker App. All rights reserved.</p>
-        </div>
-    </footer>
-
-    {% block js %}
-    {% endblock %}
-</body>
-
+        <main class="flex-grow-1">
+        </main>
+        <footer class="bg-dark text-white py-4">
+            <div class="container text-center">
+                <p>&copy; 2024 Expense Tracker App. All rights reserved.</p>
+            </div>
+        </footer>
+        {% block js %}{% endblock %}
+    </body>
 </html>

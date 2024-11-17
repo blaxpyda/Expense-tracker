@@ -4,22 +4,30 @@ from .models import Income, Expense, Goal
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 
 def home(request):
     return render(request, 'home.html')
 
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)  # Automatically log the user in after sign-up
-            return redirect('home')
-    else:
-        form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy("tracker:login")
+    # success_url = "login"
+    template_name = "signup.html"
+
+# def signup(request):
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)  # Automatically log the user in after sign-up
+#             return redirect('home')
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'signup.html', {'form': form})
 
 @login_required
 def income(request):
