@@ -1,93 +1,47 @@
-{% include "base.html" %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        {% block meta %}{% endblock %}
-        <title>Finance Tracker - Home</title>
-        {% block boot %}{% endblock %}
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'tracker:home' %}">Expense Tracker</a>
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'tracker:dashboard' %}">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'tracker:logout' %}">Logout</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'tracker:login' %}">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'tracker:signup' %}">Sign Up</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!--Hero Section-->
-        <div class="jumbotron jumbotron-fluid bg-light text-dark py-5">
-            <div class="container text-center">
-                <h1 class="display-4">Track Your Expenses Effortlessly</h1>
-                <p class="lead">Manage your finances, set budgets, and analyze your spending habits.</p>
-                {% if not user.is_authenticated %}
-                    <a href="{% url 'tracker:signup' %}" class="btn btn-primary btn-lg">Get Started</a>
-                {% else %}
-                    <a href="{% url 'tracker:dashboard' %}" class="btn btn-primary btn-lg">Go to the Dashboard</a>
-                {% endif %}
-            </div>
+{% extends "base.html" %}
+{% block content %}
+    <!--Hero Section-->
+    <div class="jumbotron jumbotron-fluid bg-light text-dark py-5">
+        <div class="container text-center">
+            <h1 class="display-4">Track Your Expenses Effortlessly</h1>
+            <p class="lead">Manage your finances, set budgets, and analyze your spending habits.</p>
+            {% if not user.is_authenticated %}
+                <a href="{% url 'tracker:signup' %}" class="btn btn-primary btn-lg">Get Started</a>
+            {% else %}
+                <a href="{% url 'tracker:dashboard' %}" class="btn btn-primary btn-lg">Go to the Dashboard</a>
+            {% endif %}
         </div>
-        <!--Features Section-->
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-md-4 text-center">
-                    <div class="card border-0">
-                        <div class="card-body">
-                            <h5 class="card-title">Easy Tracking</h5>
-                            <p class="card-text">
-                                Log your expenses and income with ease, and keep track of your finances in
-                                one place.
-                            </p>
-                        </div>
+    </div>
+    <!--Features Section-->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Easy Tracking</h5>
+                        <p class="card-text">
+                            Log your expenses and income with ease, and keep track of your finances in
+                            one place.
+                        </p>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
-                    <div class="card border-0">
-                        <div class="card-body">
-                            <h5 class="card-title">Insightful Analytics</h5>
-                            <p class="card-text">Vizualize your spending habits and make better financial decisions.</p>
-                        </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Insightful Analytics</h5>
+                        <p class="card-text">Vizualize your spending habits and make better financial decisions.</p>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
-                    <div class="card border-0">
-                        <div class="card-body">
-                            <h5 class="card-title">Budget Planning</h5>
-                            <p class="card-text">Set up monthly budgets and get notifications if you exceed the limits.</p>
-                        </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Budget Planning</h5>
+                        <p class="card-text">Set up monthly budgets and get notifications if you exceed the limits.</p>
                     </div>
                 </div>
             </div>
         </div>
-        <main class="flex-grow-1">
-        </main>
-        <footer class="bg-dark text-white py-4">
-            <div class="container text-center">
-                <p>&copy; 2024 Expense Tracker App. All rights reserved.</p>
-            </div>
-        </footer>
-        {% block js %}{% endblock %}
-    </body>
-</html>
+    </div>
+{% endblock %}

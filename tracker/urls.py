@@ -12,6 +12,8 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('income/', income, name='income'),
-    path('expense/', expense, name='expense'),
+    path('expense_list/', expense_list, name='expense_list'),
+    path('expenses/add/', add_expense, name='add_expense'),
+    path('expenses/delete/<int:expense_id>/', delete_expense, name='delete_expense'),
     path('dashboard/', dashboard, name='dashboard'),
 ]
